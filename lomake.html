@@ -1,0 +1,75 @@
+<html>
+<!-- BOOTSRAP tyylien määrittely -->
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+  <!-- Tyylit -->
+  <style>
+    div {
+      margin: 10px;
+    }
+    form {
+      padding: 10px;
+    }
+    input{
+      resize: both;
+    }
+    body{
+      background-color: cadetblue;
+    }
+    h1{
+      padding-top: 100px;
+    }
+  </style>
+  <!-- html sisältö -->
+  <body>
+    <h1 class="text-center">Write a new entry to the guestbook!</h1>
+    <!-- lomake joka lähetetään eteenpäin ja josta saadaan tiedot guestbookia varten-->
+    <div>
+        <form method="POST" action="/addmessage">
+          <div class="form-group">
+              <label for="InputName"></label>
+
+               <input
+                type="Name"
+                class="form-control"
+                id="name"
+                placeholder="Name"
+                name="Name"
+                required
+              />
+            </div>
+          <div class="form-group">
+            <label for="InputCountry"></label>
+            <input
+              type="Country"
+              class="form-control"
+              id="country"
+              placeholder="Country"
+              name="Country"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="InputMessage"></label>
+             <input
+              type="Message"
+              class="form-control"
+              id="message"
+              placeholder="Message"
+              name="Message"
+              required
+            />
+          </div>
+          <!-- napista lähtee -->
+          <button type="submit" id="button1" class="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
+  
+  </body>
+</html>

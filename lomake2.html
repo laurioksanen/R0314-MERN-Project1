@@ -1,0 +1,124 @@
+<html>
+<!-- BOOTSRAP tyylien tuonti-->
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+  <!-- Tyylit -->
+  <style>
+    div {
+      margin: 10px;
+    }
+    form {
+      padding: 10px;
+    }
+    input{
+      resize: both;
+    }
+    body{
+      background-color: lightgray;
+    }
+    h1{
+      padding-top: 100px;
+    }
+  </style>
+
+  <!-- JQuery kirjasto -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<!-- Scriptit -->
+  <script>
+
+// kun form lähetetään seuraava koodi ajetaan
+$(document).on('click', '#button1', function () {
+
+  // yritän tallentaa tiedot mutta se ei toimi
+var name = $("#name").val();
+var country = $("#country").val();
+var message = $("#message").val();
+var date = new Date();
+    
+     $.ajax( {
+         url: "guestjson.json",
+         dataType:"json",
+        success: function (data) {
+               data.push({
+                 "id": data.length+1,
+                 "name": name,
+                 "country": country,
+                 "date": date.toString(),
+                 "message": message
+               })
+              }
+    });
+// haetaan json tiedot ja esitetään ne
+      $.getJSON("guestjson.json", function(data) {
+        var guestbookdata= "<table class='table table-bordered table-warning table-striped'><thead class=\"thead-dark\"><tr><th>#</th><th>Name</th><th>Country</th><th>Message</th><th>Date</th></tr></thead><tbody>"
+          for(i=0;i<data.length;i++) {
+        guestbookdata+="<tr><td>"+data[i].id+"</td><td>"+data[i].username+"</td><td>"+data[i].country+
+        "</td><td>"+data[i].message+"</td><td>"+data[i].date+"</td></tr>";
+    }
+    guestbookdata+="</tbody></table></body>";
+    $('#toka').html(guestbookdata)
+
+      })
+});
+
+  </script>
+  <body>
+    <h1 class="text-center">Write a new entry to the guestbook!</h1>
+    <!-- html form -->
+    <div id="eka">
+        <form>
+          <div class="form-group">
+              <label for="InputName"></label>
+               <input
+                type="Name"
+                class="form-control"
+                id="name"
+                placeholder="Name"
+                name="Name"
+                required
+              />
+            </div>
+          <div class="form-group">
+            <label for="InputCountry"></label>
+            <input
+              type="Country"
+              class="form-control"
+              id="country"
+              placeholder="Country"
+              name="Country"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="InputMessage"></label>
+             <input
+              type="Message"
+              class="form-control"
+              id="message"
+              placeholder="Message"
+              name="Message"
+              required
+            />
+          </div>
+          <!-- buttonin type button ei lähetä tietoa jolloin sivu ei lataudu uudestaan ja guestbook tiedot voidaan esittää sivulla -->
+          <button type="button"  id="button1" class="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
+      <!-- tänne tulee guestbook tiedot -->
+      <div id="toka">
+
+
+
+
+      </div>
+  
+  </body>
+</html>

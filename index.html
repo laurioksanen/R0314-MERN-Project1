@@ -1,0 +1,61 @@
+<html>
+<!-- BOOTSRAP tyylien määrittely -->
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+  <!-- Tyyliet-->
+  <style>
+    div {
+      margin: 10px;
+    }
+    form {
+      border: 1px solid lightgrey;
+      padding: 10px;
+    }
+    button {
+      padding: 10px;
+      margin: 10px;
+    }
+
+    #btn0{
+      background-color: rgb(224, 197, 129);
+    }
+    #btn1{
+      background-color: cadetblue;
+    }
+
+    #btn2{
+      background-color: lightgray;
+    }
+
+  </style>
+  <!-- Scripti jossa viedään käyttäjä eri sivuille -->
+  <script>
+    function linkit(a) {
+      if(a=='x') {
+        window.location.replace(window.location.href+"guestbook")
+      } else if(a=='y') {
+        window.location.replace(window.location.href+"newmessage")
+      } else {
+        window.location.replace(window.location.href+"ajaxmessage")
+      }
+    }
+
+
+  </script>
+
+<!-- html sisältö -->
+  <body>
+    <div class="container">
+      <div class="jumbotron text-center">
+        <h1 class="text-center">Welcome to my guestbook homepage!</h1> <br>  <br>   
+        <button type="button" id="btn0" class="text-center" onclick="linkit('x')">See the guestbook</a>
+          <button type="button" id="btn1" class="text-center" onclick="linkit('y')">See the guestbook</a>
+            <button type="button" id="btn2" class="text-center" onclick="linkit('i')">See the guestbook</a>
+      </div></div>
+  
+  </body>
+</html>
